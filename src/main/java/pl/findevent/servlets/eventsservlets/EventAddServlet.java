@@ -22,6 +22,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,22 +65,20 @@ class EventAddServlet extends HttpServlet {
         logger.info("Start date podana: " + start_date);
         logger.info("Finish date podana: " + finish_date);
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate = null;
-        Date finishDate = null;
+        Date startDate2 = null;
+        Date finishDate2 = null;
+
         try {
-            startDate = format.parse(start_date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
-            finishDate = format.parse(finish_date);
+            startDate2 = new SimpleDateFormat("yyyy-MM-dd").parse(start_date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        logger.info("Start date nowa: " + startDate);
-        logger.info("Finish date nowa: " + finishDate);
+        try {
+            finishDate2 = new SimpleDateFormat("yyyy-MM-dd").parse(finish_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         boolean promoteTranslate;
 
@@ -89,13 +88,12 @@ class EventAddServlet extends HttpServlet {
             promoteTranslate = false;
         }
 
-        //  EventsDaoBean eventsDao = new EventsDaoBean();
 
         Event event = new Event();
         event.setName(name);
         event.setDescription(description);
-        event.setStartDate(startDate);
-        event.setFinishDate(finishDate);
+        event.setStartDate(startDate2);
+        event.setFinishDate(finishDate2);
         event.setAddress(address);
         event.setGoogleMaps(googleMaps);
         event.setOrganizer(Integer.valueOf(organizer));

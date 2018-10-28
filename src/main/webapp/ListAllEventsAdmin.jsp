@@ -45,6 +45,7 @@
                                 <th>Ilość biletów</th>
                                 <th>Kategoria</th>
                                 <th>Promocja</th>
+                                <th>Szczegóły</th>
 
 
                                 <th><em class="fa fa-cog"></em></th>
@@ -64,10 +65,10 @@
                                             ${eventLoop.getDescription()}
                                     </td>
                                     <td>
-                                            ${eventLoop.getStartDate()}
+                                            ${eventLoop.getStartDate().toString().substring(0,10)}
                                     </td>
                                     <td>
-                                            ${eventLoop.getFinishDate()}
+                                            ${eventLoop.getFinishDate().toString().substring(0,10)}
                                     </td>
                                     <td>
                                             ${eventLoop.getAddress()}
@@ -99,6 +100,10 @@
                                     </td>
                                     <td>
                                             ${eventLoop.isPromote()}
+                                    </td>
+                                    <td>
+                                        <a href="EventDetails?id=${eventLoop.getId()}"><em
+                                                class="fa fa-gift color-aqua"></em></a>
                                     </td>
 
 

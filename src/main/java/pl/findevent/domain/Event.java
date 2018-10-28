@@ -1,6 +1,8 @@
 package pl.findevent.domain;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -86,7 +88,12 @@ public class Event {
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        try {
+          this.startDate =   new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(startDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public Date getFinishDate() {

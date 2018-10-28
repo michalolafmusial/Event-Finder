@@ -558,13 +558,23 @@
 
 
                             <c:if test="${empty login}"><a class="nav-link color-grey-hover" href="user.jsp">Zaloguj
-                                się/Dodaj konto</a></c:if>
-                            <c:if test="${not empty login}"><a class="nav-link color-grey-hover"
-                                                               href="/UserDetails?id=${loggedUser}">Witaj: ${login}
-                                (moje
-                                konto)</a></c:if>
+                            się/Dodaj konto</a></c:if>
+                            <c:if test="${not empty login}">
 
-                            <!-- <a class="nav-link color-grey-hover" href="/UserAdd">Moje konto</a>-->
+                        <li class="nav-item dropdown has-submenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Witaj: ${login}
+                                (moje
+                                konto)</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                <li><a class="dropdown-item" href="/UserDetails?id=${loggedUser}">Szczegóły konta</a></li>
+                                <li><a class="dropdown-item" href="ListUserTicketsServlet">Moje zamówienia</a></li>
+                            </ul>
+                        </li>
+
+                        </c:if>
+
+                        <!-- <a class="nav-link color-grey-hover" href="/UserAdd">Moje konto</a>-->
                         </li>
 
                         <c:if test="${not empty login}">

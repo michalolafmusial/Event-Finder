@@ -3,6 +3,7 @@ package pl.findevent.dao;
 import pl.findevent.domain.User;
 
 import javax.ejb.Local;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +25,6 @@ public interface UsersDao {
     void modifyUserDb(User user);
 
     Optional<User> getUserByLogin(String login);
+
+    List getUserTickets(int userId);
 }

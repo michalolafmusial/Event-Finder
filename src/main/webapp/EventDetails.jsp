@@ -35,7 +35,7 @@
 
                         <h3><strong>${event.getName()}</strong></h3>
 
-                        <p><strong>${event.getStartDate()} - ${event.getFinishDate()}</strong></p>
+                        <p><strong>${event.getStartDate().toString().substring(0,10)} - ${event.getFinishDate().toString().substring(0,10)}</strong></p>
 
                         <P><strong>Miejsce:</strong>
                             <BR>${event.getAddress()} - <a href="${event.getGoogleMaps()}" target="_blank">Mapa

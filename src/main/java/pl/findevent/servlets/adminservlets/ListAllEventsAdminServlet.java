@@ -35,6 +35,8 @@ public class ListAllEventsAdminServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         List<Event> listOfEvents = eventsDao.getEventsListFromDB();
         request.setAttribute("listOfEvents", listOfEvents);
+        logger.info("Data z bazy: "+listOfEvents.get(0).getStartDate());
+        listOfEvents.get(0).getStartDate().toString().substring(0,10);
         RequestDispatcher rd = request.getRequestDispatcher("ListAllEventsAdmin.jsp");
         rd.forward(request, response);
         

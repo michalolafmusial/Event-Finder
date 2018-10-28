@@ -3,10 +3,7 @@ package pl.findevent.dao;
 import pl.findevent.domain.User;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -122,6 +119,21 @@ public class UsersDaoBean implements UsersDao {
                 .findFirst();
         return user;
 
+    }
+
+    @Override
+    public List getUserTickets (int UserId) {
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        Query query = entityManager.createNativeQuery("select  id_event, count(*) from event_user e\n" +
+                "where id_user = ?");
+        query.setParameter(1, UserId);
+        // FIX ME
+        List listOfUserTicekts = query.getResultList();
+
+        return listOfUserTicekts;
     }
 
     public UsersDaoBean() {

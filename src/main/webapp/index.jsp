@@ -24,10 +24,10 @@
                                        title="">${eventLoop.getName()}</a>
                                 </h4>
                                 <small><a href="EventDetails?id=${eventLoop.getId() }" title="">Start
-                                    date: ${eventLoop.getStartDate()}</a>
+                                    date: ${eventLoop.getStartDate().toString().substring(0,10)}</a>
                                 </small>
                                 <small><a href="EventDetails?id=${eventLoop.getId()}" title="">End
-                                    date: ${eventLoop.getFinishDate()}</a>
+                                    date: ${eventLoop.getFinishDate().toString().substring(0,10)}</a>
                                 </small>
                             </div><!-- end meta -->
                         </div><!-- end shadow-desc -->
